@@ -1,34 +1,36 @@
 import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
+   {
+    title: true,
+    name: 'El Gran Pollon',
+    
+  },
   {
     name: 'Dashboard',
     url: '/dashboard',
     iconComponent: { name: 'cil-speedometer' },
-    badge: {
-      color: 'info',
-      text: 'NEW'
-    }
+    // badge: {
+    //   color: 'info',
+    //   text: 'NEW'
+    // }
   },
+  // {
+  //   title: true,
+  //   name: 'Theme'
+  // },
   {
-    title: true,
-    name: 'Theme'
-  },
-  {
-    name: 'Colors',
-    url: '/theme/colors',
+    name: 'Platillos',
+    url: '/platillos',
     iconComponent: { name: 'cil-drop' }
   },
   {
-    name: 'Typography',
-    url: '/theme/typography',
-    linkProps: { fragment: 'someAnchor' },
+    name: 'Categorias',
+    url: '/categorias',
+    
     iconComponent: { name: 'cil-pencil' }
   },
-  {
-    name: 'Components',
-    title: true
-  },
+  
   {
     name: 'Base',
     url: '/base',
