@@ -45,6 +45,12 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { UserComponent } from './components/user/user.component';
+import { CategoryComponent } from './components/category/category.component';
+import { PlatilloComponent } from './components/platillo/platillo.component';
+import { UserFormComponent } from './components/user/user-form/user-form.component';
+import { CategoryFormComponent } from './components/category/category-form/category-form.component';
+import { PlatilloFormComponent } from './components/platillo/platillo-form/platillo-form.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -57,7 +63,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS],
+  declarations: [AppComponent, ...APP_CONTAINERS, UserComponent, CategoryComponent, PlatilloComponent, UserFormComponent, CategoryFormComponent, PlatilloFormComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -33,7 +33,16 @@ const routes: Routes = [
     data: {
       title: 'Register Page'
     }
-  }
+  },
+  
+  {
+    path: 'register',
+    component: RegisterComponent,
+    data: {
+      title: 'Register Page'
+    }
+  },
+
 ];
 
 @NgModule({
