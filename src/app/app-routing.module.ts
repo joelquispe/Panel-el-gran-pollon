@@ -12,6 +12,8 @@ import { CategoryFormComponent } from './components/category/category-form/categ
 import { CategoryComponent } from './components/category/category.component';
 import { PlatilloFormComponent } from './components/platillo/platillo-form/platillo-form.component';
 import { PlatilloComponent } from './components/platillo/platillo.component';
+import { CustomerComponent } from './components/customer/customer.component';
+import { CustomerFormComponent } from './components/customer/customer-form/customer-form.component';
 
 const routes: Routes = [
   {
@@ -47,12 +49,12 @@ const routes: Routes = [
         data: { title:"platillos"}
       },
       {
-        path:'platillo/create',
+        path:'platillos/create',
         component: PlatilloFormComponent,
         data: { title:"Crear Usuario "}
       },
       {
-        path:'platillo/edit/:id',
+        path:'platillos/edit/:id',
         component: PlatilloFormComponent,
         data: { title:"Editar Usuario"}
       },
@@ -70,6 +72,21 @@ const routes: Routes = [
         path:'categoria/edit/:id',
         component: CategoryFormComponent,
         data: { title:"Editar Categoria"}
+      },
+      {
+        path:'clientes',
+        component: CustomerComponent,
+        data: { title:"Categorias"}
+      },
+      {
+        path:'cliente/create',
+        component: CustomerFormComponent,
+        data: { title:"Crear cliente "}
+      },
+      {
+        path:'cliente/edit/:id',
+        component: CustomerFormComponent,
+        data: { title:"Editar cliente"}
       },
       {
         path: 'dashboard',

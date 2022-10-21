@@ -1,0 +1,30 @@
+
+<div class="table-responsive">
+    <table class="table table-dark table-striped ">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre y apellido</th>
+                
+                <th>Correo</th>
+                <th>Telefono</th>
+                <th>Dirección</th>
+                <th>Fecha de nacimiento</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>  
+        <tbody class="table-group-divider">
+            <tr *ngFor="let customer of customers">
+                <td>{{customer.id}}</td>
+                <td>{{customer.name}} {{customer.lastname}} </td>
+                <td>{{customer.email}}</td>
+                <td>{{customer.phone}}</td>
+                <td>{{customer.address}}</td>
+                <td>{{customer.dateOfBirth}}</td>
+                <td style="width:150px;"><button cButton [color]="'danger'" class="me-1"><b>Editar</b><c-icon name="cil-trash" size="lg"></c-icon></button> </td>
+                <td style="width:150px;"><button cButton [color]="'warning'" class="me-1"><b>Eliminar</b><c-icon name="cil-pencil" size="lg"></c-icon></button> </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

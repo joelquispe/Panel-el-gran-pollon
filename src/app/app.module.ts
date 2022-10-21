@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { ToastrModule } from 'ngx-toastr';
 import {
   PERFECT_SCROLLBAR_CONFIG,
   PerfectScrollbarConfigInterface,
@@ -33,6 +35,7 @@ import {
   DropdownModule,
   FooterModule,
   FormModule,
+  
   GridModule,
   HeaderModule,
   ListGroupModule,
@@ -51,7 +54,10 @@ import { PlatilloComponent } from './components/platillo/platillo.component';
 import { UserFormComponent } from './components/user/user-form/user-form.component';
 import { CategoryFormComponent } from './components/category/category-form/category-form.component';
 import { PlatilloFormComponent } from './components/platillo/platillo-form/platillo-form.component';
-
+import { CustomerComponent } from './components/customer/customer.component';
+import { CustomerFormComponent } from './components/customer/customer-form/customer-form.component';
+import { environment } from 'src/environments/environment';
+import { CommonModule } from '@angular/common';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
@@ -63,14 +69,19 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, UserComponent, CategoryComponent, PlatilloComponent, UserFormComponent, CategoryFormComponent, PlatilloFormComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, UserComponent, CategoryComponent, PlatilloComponent, UserFormComponent, CategoryFormComponent, PlatilloFormComponent, CustomerComponent, CustomerFormComponent],
   imports: [
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     AvatarModule,
     BreadcrumbModule,
     FooterModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
+    ToastrModule.forRoot(),
+    FormsModule,
     DropdownModule,
     GridModule,
     HeaderModule,

@@ -1,1 +1,95 @@
-<p>platillo-form works!</p>
+<c-card class="mb-4">
+    <c-card-header>
+      <strong>{{title}}</strong>
+    </c-card-header>
+    <c-card-body>
+      <div >
+        <form cForm (ngSubmit)="handleForm()"  [validated]="nameV" cForm >
+          <div class="mb-3">
+            <label cLabel for="">Nombre</label>
+            <input cFormControl
+                   name="name"
+                   placeholder="pollo"
+                  required
+                   type="text"
+                   [(ngModel)]="plate.name"
+            />
+            
+          </div>
+          <div class="mb-3">
+            <label cLabel for="">Descripción</label>
+           
+            <input cFormControl
+                   name="description"
+                   placeholder="1/4 de pollo horneado"
+                   type="text"
+                   required
+                   [(ngModel)]="plate.description"
+            />
+          </div>
+          <div class="mb-3">
+            <label cLabel for="">Precio</label>
+            <c-input-group class="mb-3">
+
+                <span cInputGroupText>S/</span>
+                <input cFormControl
+                       name="price"
+                       placeholder="20.00"
+                       type="text"
+                       required
+                       [(ngModel)]="plate.price"
+                />
+                
+              </c-input-group>
+          </div>
+          
+          <div class="mb-3">
+            <label cLabel for="">Stock</label>
+           
+            <input cFormControl
+            
+                   name="stock"
+                   required
+                   placeholder="10"
+                   type="text"
+                   [(ngModel)]="plate.stock"
+            />
+          </div>
+          <div class="mb-3">
+            <label cLabel for="">Categoria</label>
+            <p style="font-weight: bold;">{{plate.category?.name}}</p>
+            <select  name="category" id="" cSelect  required [(ngModel)]="plate.category"   >
+
+                <option *ngIf="id == null" value="">Seleccionar</option>
+                <option *ngFor="let cate of categories"  [ngValue]="cate" >{{cate?.name}}</option>
+            </select>
+            
+           
+           
+          </div>
+          <div class="mb-3 d-grid">
+            <label cLabel for="">Foto</label>
+            
+           
+            <input cFormControl
+                   name="photo"
+                   placeholder="1/4 de pollo horneado"
+                   type="file"
+                   
+                   required
+                   (change) = "changePhoto($event)"
+            />
+            <img src="{{plate.image}}" width="150px" class="img-fluid rounded-top mt-4" alt="">
+          </div>
+          <!-- <div class="mb-3">
+            <label cLabel for="exampleFormControlTextarea1">Example textarea</label>
+            <textarea cFormControl id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div> -->
+          <button cButton  type="submit">Guardar</button>
+          
+        </form>
+        
+      </div>
+    </c-card-body>
+  </c-card>
+
