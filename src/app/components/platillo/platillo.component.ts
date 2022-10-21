@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { Category } from '../../interfaces/category';
 import { Plate } from '../../interfaces/plate';
+import { ApiService } from '../../services/api.service';
 @Component({
   selector: 'app-platillo',
   templateUrl: './platillo.component.html',
@@ -13,26 +14,18 @@ export class PlatilloComponent implements OnInit {
   plates :Plate[] = [];
   status="";
   isloading =false;
-  constructor() { }
+  constructor(private api: ApiService) { }
 
   ngOnInit(): void {
     
     this.getData();
   }
 
-  
-
   async getData(){
-    var resp = await axios.get("/api/plates/listar",{
-      headers: {
-        "Access-Control-Allow-Origin ":"*",
-        'Content-Type': 'application/json',
-      }
-    });
+    var resp = await this.api.getData("/api/plates/listar");
     console.log(resp.data)
     this.plates = [];
     if(resp.data.length > 0){
-      
       resp.data.forEach((element: any) => {
         this.plates.push({
           id: element.id,
@@ -50,22 +43,20 @@ export class PlatilloComponent implements OnInit {
     }
   }
 
-  async delete(id:number){
+  async delete(id: number){
     this.isloading = true;
     if(confirm("Esta seguro de eliminar")){
-      await axios.delete("/api/plates/borrar/"+id,{
-        headers: {
-          "Access-Control-Allow-Origin ":"*",
-          'Content-Type': 'application/json',
-        }
-      }).then((resp)=>{
+      this.api.deleteData("/api/plates/borrar/",id).then((resp)=>{
         alert("borrado con exito")
+        this.api.showSuccess("Eliminar plato")
         this.getData();
+      }).catch(e=>{
+        this.api.showError("Eliminar plato")
       })
     }
     
     this.isloading = false;
-     
+    
   }
 
   

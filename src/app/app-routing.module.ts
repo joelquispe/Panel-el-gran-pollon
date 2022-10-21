@@ -64,6 +64,11 @@ const routes: Routes = [
         data: { title:"Categorias"}
       },
       {
+        path:'empleados',
+        component: CategoryComponent,
+        data: { title:"Categorias"}
+      },
+      {
         path:'categoria/create',
         component: CategoryFormComponent,
         data: { title:"Crear Categoria "}

@@ -14,7 +14,7 @@ declare let alertify: any;
 export class PlatilloFormComponent implements OnInit {
   categories: Category[] = [];
 
-  plate: Plate = { status: 'true' };
+  plate: Plate = { status: true };
   public photo: File = null;
   id: string | null;
   title = 'Crear platillo';
@@ -37,38 +37,27 @@ export class PlatilloFormComponent implements OnInit {
     }
   }
   async getDataPlate() {
-    console.log('/api/plates/buscar/' + this.id.toString());
-    await axios
-      .get('/api/plates/buscar/' + this.id.toString(), {
-        headers: {
-          'Access-Control-Allow-Origin ': '*',
-          'Content-Type': 'application/json',
-        },
-      })
-      .then((resp) => {
-        console.log(resp);
-      })
-      .catch((e) => {
-        if (e.response.data != null) {
-          this.plate = e.response.data;
-          console.log(this.plate.category);
-        }
-      });
+    this.api.getDataById("/api/plates/buscar/",this.id).then((resp)=>{
+      console.log(resp);
+    }).catch(e=>{
+      if (e.response.data != null) {
+        this.plate = e.response.data;
+        console.log(this.plate.category);
+      }
+    })
+    
   }
 
   async getDataCategories() {
-    var resp = await axios.get('/api/category/listar', {
-      headers: {
-        'Access-Control-Allow-Origin ': '*',
-        'Content-Type': 'application/json',
-      },
-    });
+    var resp = await this.api.getData("/api/category/listar");
+    
     console.log(resp.data);
     if (resp.data.length > 0) {
       resp.data.forEach((element: any) => {
         this.categories.push({
           id: element.id,
           name: element.name,
+          image: element.image
         } as Category);
       });
     }
@@ -86,6 +75,7 @@ export class PlatilloFormComponent implements OnInit {
     let task = await this.api.uploadFile(photoName, this.photo);
     this.plate.image = await ref.getDownloadURL().toPromise();
   }
+  
   async handleForm() {
     if (this.id != null) {
       if (this.photo != null) {
@@ -102,56 +92,42 @@ export class PlatilloFormComponent implements OnInit {
     }
   }
   async save() {
+    
     this.nameV = true;
     if (
       this.plate.name != '' &&
       this.plate.description != '' &&
       this.photo != null &&
-      this.plate.price != '' &&
-      this.plate.status != '' &&
+      this.plate.price != null &&
+      
       this.plate.category != null &&
       this.plate.stock != null
     ) {
       await this.uploadPhoto();
-      axios
-        .post('/api/plates/registrar', this.plate, {
-          headers: {
-            'Access-Control-Allow-Origin ': '*',
-            'Content-Type': 'application/json',
-          },
-        })
-        .then((resp) => {
-          this.showSuccess("Crear platillo");
+      
+     
+      this.api.saveData('/api/plates/registrar',this.plate).then((resp)=>{
+             this.showSuccess("Crear platillo");
           this.router.navigate(['/platillos']);
           console.log(resp);
-        })
-        .catch((e) => {
-          this.showError("Crear platillo");
+      }).catch(e=>{
+     this.showError("Crear platillo");
           console.log(e);
-        });
+      })
+
     }
   }
   async edit() {
     this.nameV = true;
-
-    axios
-      .put('/api/plates/editar/' + this.id, this.plate, {
-        headers: {
-          'Access-Control-Allow-Origin ': '*',
-          'Content-Type': 'application/json',
-        },
-      })
-      .then((resp) => {
-        this.showSuccess("Editar platillo");
-
+    this.api.editData('/api/plates/editar/',this.id,this.plate).then((resp)=>{
+      this.showSuccess("Editar platillo");
         this.router.navigate(['/platillos']);
-
         console.log(resp);
-      })
-      .catch((e) => {
-        this.showError("Editar platillo");
-        console.log(e);
-      });
+    }).catch(e=>{
+      this.showError("Editar platillo");
+      console.log(e);
+    })
+    
   }
 
   showSuccess(title:string) {

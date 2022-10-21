@@ -3,9 +3,9 @@ export interface Plate {
     id?:number,
     name?:string,
     description?:string,
-    price?:string,
-    status?:string,
-    stock?:string,
+    price?:number,
+    status?:boolean,
+    stock?:number,
     image?:string,
     category?:Category;
 }

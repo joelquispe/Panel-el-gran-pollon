@@ -8,6 +8,7 @@
           <div class="mb-3">
             <label cLabel for="">Nombre</label>
             <input cFormControl
+            
                    name="name"
                    placeholder="pollo"
                   required
@@ -16,6 +17,7 @@
             />
             
           </div>
+          
           <div class="mb-3">
             <label cLabel for="">Descripción</label>
            
@@ -34,9 +36,10 @@
                 <span cInputGroupText>S/</span>
                 <input cFormControl
                        name="price"
-                       placeholder="20.00"
-                       type="text"
                        required
+                       placeholder="20.00"
+                       type="number"
+                      
                        [(ngModel)]="plate.price"
                 />
                 
@@ -51,7 +54,7 @@
                    name="stock"
                    required
                    placeholder="10"
-                   type="text"
+                   type="number"
                    [(ngModel)]="plate.stock"
             />
           </div>
@@ -79,13 +82,13 @@
                    required
                    (change) = "changePhoto($event)"
             />
-            <img src="{{plate.image}}" width="150px" class="img-fluid rounded-top mt-4" alt="">
+            <img *ngIf="id != null" src="{{plate.image}}" width="150px" class="img-fluid rounded-top mt-4" alt="">
           </div>
           <!-- <div class="mb-3">
             <label cLabel for="exampleFormControlTextarea1">Example textarea</label>
             <textarea cFormControl id="exampleFormControlTextarea1" rows="3"></textarea>
           </div> -->
-          <button cButton  type="submit">Guardar</button>
+          <button cButton  type="submit" >Guardar</button>
           
         </form>
         

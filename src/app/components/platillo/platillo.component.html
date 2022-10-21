@@ -28,7 +28,7 @@
                 <td>{{plate.name}}</td>
                 <td>{{plate.description}}</td>
                 <td>{{plate.price}}</td>
-                <td *ngIf="plate.status == 'true';else noActive" >Activo</td>
+                <td *ngIf="plate.status == true;else noActive" >Activo</td>
                 <ng-template #noActive>
                     <td>Inactivo</td>
                 </ng-template>
