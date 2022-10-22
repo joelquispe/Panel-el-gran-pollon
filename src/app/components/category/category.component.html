@@ -5,20 +5,18 @@
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
-                <th>Correo</th>
-                <th>Password</th>
+                <th>Imagen</th>
                 <th></th>
                 <th></th>
             </tr>
         </thead>  
         <tbody class="table-group-divider">
-            <tr>
-                <td>Id</td>
-                <td>Nombre</td>
-                <td>Correo</td>
-                <td>Password</td>
+            <tr *ngFor="let category of categories">
+                <td>{{category.id}}</td>
+                <td>{{category.name}}</td>
+                <td><img height="50em" src="{{category.image}}" alt=""> </td>
                 <td style="width:150px;"><button cButton [color]="'danger'" class="me-1"><b>Editar</b><c-icon name="cil-trash" size="lg"></c-icon></button> </td>
-                <td style="width:150px;"><button cButton [color]="'warning'" class="me-1"><b>Eliminar</b><c-icon name="cil-pencil" size="lg"></c-icon></button> </td>
+                <td style="width:150px;"><button cButton [color]="'warning'" class="me-1" (click)="delete(category.id)"><b>Eliminar</b><c-icon name="cil-pencil" size="lg"></c-icon></button> </td>
             </tr>
         </tbody>
     </table>
