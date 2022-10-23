@@ -10,7 +10,10 @@ import {
   FormModule,
   GridModule,
   NavModule,
+  WidgetModule,
+  UtilitiesModule,
   ProgressModule,
+  DropdownModule,
   TableModule,
   TabsModule
 } from '@coreui/angular';
@@ -27,6 +30,9 @@ import { WidgetsModule } from '../widgets/widgets.module';
     DashboardRoutingModule,
     CardModule,
     NavModule,
+    WidgetModule,
+    DropdownModule,
+    UtilitiesModule,
     IconModule,
     TabsModule,
     CommonModule,

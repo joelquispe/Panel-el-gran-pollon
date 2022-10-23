@@ -4,8 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './containers';
 import { Page404Component } from './views/pages/page404/page404.component';
 import { Page500Component } from './views/pages/page500/page500.component';
-import { LoginComponent } from './views/pages/login/login.component';
-import { RegisterComponent } from './views/pages/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+
 import { UserComponent } from './components/user/user.component';
 import { UserFormComponent } from './components/user/user-form/user-form.component';
 import { CategoryFormComponent } from './components/category/category-form/category-form.component';
@@ -14,16 +14,32 @@ import { PlatilloFormComponent } from './components/platillo/platillo-form/plati
 import { PlatilloComponent } from './components/platillo/platillo.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { CustomerFormComponent } from './components/customer/customer-form/customer-form.component';
+import { AuthGuard } from './guards/auth.guard';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { EmployeComponent } from './components/employe/employe.component';
+import { EmployeFormComponent } from './components/employe/employe-form/employe-form.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { MotorizedComponent } from './components/motorized/motorized.component';
+import { MotorizedFormComponent } from './components/motorized/motorized-form/motorized-form.component';
 
 const routes: Routes = [
+  
   {
-    path: '',
-    redirectTo: 'dashboard',
+    path:'',
+    redirectTo: '/login',
     pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    data: {
+      title: 'Login Page'
+    }
   },
   {
     path: '',
     component: DefaultLayoutComponent,
+    canActivate: [AuthGuard],
     data: {
       title: 'Home'
     },
@@ -63,11 +79,7 @@ const routes: Routes = [
         component: CategoryComponent,
         data: { title:"Categorias"}
       },
-      {
-        path:'empleados',
-        component: CategoryComponent,
-        data: { title:"Categorias"}
-      },
+     
       {
         path:'categoria/create',
         component: CategoryFormComponent,
@@ -81,7 +93,7 @@ const routes: Routes = [
       {
         path:'clientes',
         component: CustomerComponent,
-        data: { title:"Categorias"}
+        data: { title:"Clientes"}
       },
       {
         path:'cliente/create',
@@ -94,7 +106,43 @@ const routes: Routes = [
         data: { title:"Editar cliente"}
       },
       {
+        path:'empleados',
+        component: EmployeComponent,
+        data: { title:"Empleados"}
+      },
+      {
+        path:'empleado/create',
+        component: EmployeFormComponent,
+        data: { title:"Crear empleado "}
+      },
+      {
+        path:'empleado/edit/:id',
+        component: EmployeFormComponent,
+        data: { title:"Editar empleado"}
+      },
+      {
+        path:'ordenes',
+        component: OrdersComponent,
+        data: { title:"Ordenes"}
+      },
+      {
+        path:'motorizados',
+        component: MotorizedComponent,
+        data: { title:"Motorizados"}
+      },
+      {
+        path:'motorizado/create',
+        component: MotorizedFormComponent,
+        data: { title:"Crear motorizado "}
+      },
+      {
+        path:'motorizado/edit/:id',
+        component: MotorizedFormComponent,
+        data: { title:"Editar motorizado"}
+      },
+      {
         path: 'dashboard',
+        
         loadChildren: () =>
           import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
@@ -159,21 +207,10 @@ const routes: Routes = [
       title: 'Page 500'
     }
   },
-  {
-    path: 'login',
-    component: LoginComponent,
-    data: {
-      title: 'Login Page'
-    }
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-    data: {
-      title: 'Register Page'
-    }
-  },
-  {path: '**', redirectTo: 'dashboard'}
+  {path:'**',component:DashboardComponent}
+  
+ 
+  
 ];
 
 @NgModule({
