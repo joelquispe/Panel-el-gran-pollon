@@ -15,6 +15,15 @@ export const navItems: INavData[] = [
     //   text: 'NEW'
     // }
   },
+  {
+    name: 'Perfil',
+    url: '/perfil',
+    iconComponent: { name: 'cil-speedometer' },
+    // badge: {
+    //   color: 'info',
+    //   text: 'NEW'
+    // }
+  },
   // {
   //   title: true,
   //   name: 'Theme'

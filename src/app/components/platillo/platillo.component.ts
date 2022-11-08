@@ -40,6 +40,8 @@ export class PlatilloComponent implements OnInit {
         } as Plate);
         
       });
+    }else{
+      this.plates = [];
     }
   }
 

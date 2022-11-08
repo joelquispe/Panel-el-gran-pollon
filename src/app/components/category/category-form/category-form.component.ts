@@ -7,11 +7,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-category-form',
   templateUrl: './category-form.component.html',
-  styleUrls: ['./category-form.component.scss']
+  styleUrls: ['./category-form.component.scss'],
 })
 export class CategoryFormComponent implements OnInit {
-
-  category: Category = {  };
+  category: Category = {};
   public photo: File = null;
   id: string | null;
   title = 'Crear platillo';
@@ -27,23 +26,25 @@ export class CategoryFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getDataCategory();
     if (this.id != null) {
-      this.title = 'Editar platillo';
       this.getDataCategory();
+      this.title = 'Editar platillo';
+      
     }
   }
 
   async getDataCategory() {
-    this.api.getDataById("/api/category/buscar/",this.id).then((resp)=>{
-      console.log(resp);
-    }).catch(e=>{
-      if (e.response.data != null) {
-        this.category = e.response.data;
-        console.log(this.category);
-      }
-    })
-    
+    this.api
+      .getDataById('/api/category/buscar/', this.id)
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch((e) => {
+        if (e.response.data != null) {
+          this.category = e.response.data;
+          console.log(this.category);
+        }
+      });
   }
   changePhoto(event: any) {
     if (event.target.files.length > 0) {
@@ -60,16 +61,44 @@ export class CategoryFormComponent implements OnInit {
   async handleForm() {
     if (this.id != null) {
       if (this.photo != null) {
-        console.log(this.category.image)
-        console.log("============================")
-        await this.api.deleteFile(this.category.image)
+        
+        await this.api.deleteFile(this.category.image);
         await this.uploadPhoto();
-        console.log(this.category.image)
-       
+        
+        
       }
-      
+      this.edit();
     } else {
-      
+      this.save();
     }
+  }
+  async save() {
+    await this.uploadPhoto();
+
+    this.api
+      .saveData('/api/category/registrar', this.category)
+      .then((resp) => {
+        this.api.showSuccess('Categoria');
+        this.router.navigate(['/categorias']);
+       
+      })
+      .catch((e) => {
+        this.api.showError('Categoria');
+        console.log(e);
+      });
+  }
+  async edit() {
+    this.nameV = true;
+    this.api
+      .editData('/api/category/editar/', this.id, this.category)
+      .then((resp) => {
+        this.api.showSuccess('Editar platillo');
+        this.router.navigate(['/platillos']);
+       
+      })
+      .catch((e) => {
+        this.api.showError('Editar platillo');
+        console.log(e);
+      });
   }
 }

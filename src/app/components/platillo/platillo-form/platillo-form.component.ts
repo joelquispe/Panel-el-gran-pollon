@@ -38,7 +38,7 @@ export class PlatilloFormComponent implements OnInit {
   }
   async getDataPlate() {
     this.api.getDataById("/api/plates/buscar/",this.id).then((resp)=>{
-      console.log(resp);
+      
     }).catch(e=>{
       if (e.response.data != null) {
         this.plate = e.response.data;
@@ -51,7 +51,7 @@ export class PlatilloFormComponent implements OnInit {
   async getDataCategories() {
     var resp = await this.api.getData("/api/category/listar");
     
-    console.log(resp.data);
+   
     if (resp.data.length > 0) {
       resp.data.forEach((element: any) => {
         this.categories.push({
@@ -66,7 +66,7 @@ export class PlatilloFormComponent implements OnInit {
   changePhoto(event: any) {
     if (event.target.files.length > 0) {
       this.photo = event.target.files[0];
-      console.log(this.photo);
+     
     }
   }
   async uploadPhoto() {
@@ -84,9 +84,10 @@ export class PlatilloFormComponent implements OnInit {
         await this.api.deleteFile(this.plate.image)
         await this.uploadPhoto();
         console.log(this.plate.image)
-       
+        
       }
       this.edit();
+      
     } else {
       this.save();
     }

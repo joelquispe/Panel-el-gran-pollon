@@ -21,6 +21,7 @@ import { EmployeFormComponent } from './components/employe/employe-form/employe-
 import { OrdersComponent } from './components/orders/orders.component';
 import { MotorizedComponent } from './components/motorized/motorized.component';
 import { MotorizedFormComponent } from './components/motorized/motorized-form/motorized-form.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   
@@ -45,17 +46,22 @@ const routes: Routes = [
     },
     children: [
       {
+        path:'perfil',
+        component: ProfileComponent,
+        data: { title:"Perfil"}
+      },
+      {
         path:'usuarios',
         component: UserComponent,
         data: { title:"Usuarios"}
       },
       {
-        path:'usuario/create',
+        path:'usuarios/create',
         component: UserFormComponent,
         data: { title:"Crear Usuario "}
       },
       {
-        path:'usuario/edit/:id',
+        path:'usuarios/edit/:id',
         component: UserFormComponent,
         data: { title:"Editar Usuario"}
       },
@@ -81,12 +87,12 @@ const routes: Routes = [
       },
      
       {
-        path:'categoria/create',
+        path:'categorias/create',
         component: CategoryFormComponent,
         data: { title:"Crear Categoria "}
       },
       {
-        path:'categoria/edit/:id',
+        path:'categorias/edit/:id',
         component: CategoryFormComponent,
         data: { title:"Editar Categoria"}
       },
@@ -111,12 +117,12 @@ const routes: Routes = [
         data: { title:"Empleados"}
       },
       {
-        path:'empleado/create',
+        path:'empleados/create',
         component: EmployeFormComponent,
         data: { title:"Crear empleado "}
       },
       {
-        path:'empleado/edit/:id',
+        path:'empleados/edit/:id',
         component: EmployeFormComponent,
         data: { title:"Editar empleado"}
       },
@@ -131,12 +137,12 @@ const routes: Routes = [
         data: { title:"Motorizados"}
       },
       {
-        path:'motorizado/create',
+        path:'motorizados/create',
         component: MotorizedFormComponent,
         data: { title:"Crear motorizado "}
       },
       {
-        path:'motorizado/edit/:id',
+        path:'motorizados/edit/:id',
         component: MotorizedFormComponent,
         data: { title:"Editar motorizado"}
       },

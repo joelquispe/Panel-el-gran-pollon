@@ -1,0 +1,93 @@
+<c-card class="mb-4">
+  <c-card-header>
+    <strong>Perfil</strong>
+  </c-card-header>
+  <c-card-body>
+    <div>
+      <form cForm (ngSubmit)="handleForm()" cForm>
+        <div class="row">
+          <div #photo class="photo col-4">
+            <img
+              style="height: 230; width: 230px; border-radius: 100px"
+              [src]="business.image == null ? 'https://www.pays-sud-charente.com/inc/image/img_actualite/defaut.png':business.image"
+              alt=""
+            />
+          </div>
+          <div class="col-8">
+            <div class="row">
+              <div class="mb-3 col">
+                <label cLabel for="">Nombre</label>
+                <input
+                  cFormControl
+                  name="name"
+                  placeholder="El gran"
+                  required
+                  type="text"
+                  [(ngModel)]="business.name"
+                />
+              </div>
+              <div class="mb-3 col">
+                <label cLabel for="">Eslogan</label>
+                <input
+                  cFormControl
+                  name="eslogan"
+                  placeholder="el mejor restaurante"
+                  required
+                  type="text"
+                  [(ngModel)]="business.eslogan"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3 d-grid col">
+                <label cLabel for="">Foto</label>
+    
+                <input
+                  cFormControl
+                  name="photo"
+                  placeholder="imagen"
+                  type="file"
+                  required
+                  (change)="changePhoto($event)"
+                />
+               
+              </div>
+              <div class="mb-3 col">
+                <label cLabel for="">Localización</label>
+                <input
+                  cFormControl
+                  name="location"
+                  placeholder="jr.Perú 1520"
+                  required
+                  type="text"
+                  [(ngModel)]="business.location"
+                />
+              </div>
+            </div>
+            <div class="mb-3 col">
+              <label cLabel for="">Descripción</label>
+              <textarea
+                cFormControl
+                style="height: 80px"
+                name="description"
+                placeholder="Somos un restaurante de calidad que cumple con todas las caracteristicas.............."
+                required
+                type="text"
+                [(ngModel)]="business.description"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        
+       
+
+        <!-- <div class="mb-3">
+            <label cLabel for="exampleFormControlTextarea1">Example textarea</label>
+            <textarea cFormControl id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div> -->
+          
+        <button  cButton type="submit">Guardar</button>
+      </form>
+    </div>
+  </c-card-body>
+</c-card>

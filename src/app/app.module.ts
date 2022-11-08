@@ -65,6 +65,7 @@ import { MotorizedFormComponent } from './components/motorized/motorized-form/mo
 import { BusinessComponent } from './components/business/business.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
@@ -76,7 +77,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, UserComponent, CategoryComponent, PlatilloComponent, UserFormComponent, CategoryFormComponent, PlatilloFormComponent, CustomerComponent, CustomerFormComponent, EmployeComponent, EmployeFormComponent, MotorizedComponent, MotorizedFormComponent, BusinessComponent, OrdersComponent, LoginComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, UserComponent, CategoryComponent, PlatilloComponent, UserFormComponent, CategoryFormComponent, PlatilloFormComponent, CustomerComponent, CustomerFormComponent, EmployeComponent, EmployeFormComponent, MotorizedComponent, MotorizedFormComponent, BusinessComponent, OrdersComponent, LoginComponent, ProfileComponent],
   imports: [
     CommonModule,
     BrowserModule,

@@ -13,9 +13,7 @@ export class CategoryComponent implements OnInit {
   categories: Category[] = [];
   isloading =false;
   constructor( private api: ApiService,
-    private toastr: ToastrService,
-    private router: Router,
-    private aRouter: ActivatedRoute) { }
+   ) { }
 
   ngOnInit(): void {
     this.getData();
@@ -25,6 +23,7 @@ export class CategoryComponent implements OnInit {
     
     console.log(resp.data);
     if (resp.data.length > 0) {
+      this.categories= [];
       resp.data.forEach((element: any) => {
         this.categories.push({
           id: element.id,
@@ -32,6 +31,8 @@ export class CategoryComponent implements OnInit {
           image: element.image
         } as Category);
       });
+    }else{
+      this.categories = [];
     }
   }
 
@@ -51,4 +52,6 @@ export class CategoryComponent implements OnInit {
     this.isloading = false;
     
   }
+
+ 
 }

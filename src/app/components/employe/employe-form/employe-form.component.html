@@ -1,1 +1,102 @@
-<p>employe-form works!</p>
+<c-card class="mb-4">
+    <c-card-header>
+      <strong>{{ title }}</strong>
+    </c-card-header>
+    <c-card-body>
+      <div>
+        <form cForm (ngSubmit)="handleForm()" cForm>
+          <div class="row">
+              <div class="col mb-3">
+                  <label cLabel for="">Nombres</label>
+                  <input
+                    cFormControl
+                    name="name"
+                    placeholder="Joel Marcos"
+                    required
+                    type="text"
+                    [(ngModel)]="employe.name"
+                  />
+                </div>
+        
+                <div class="col mb-3">
+                  <label cLabel for="">Apellidos</label>
+        
+                  <input
+                    cFormControl
+                    name="lastname"
+                    placeholder="Sanchez Torres"
+                    type="text"
+                    required
+                    [(ngModel)]="employe.lastname"
+                  />
+                </div>
+          </div>
+          <div class="row">
+              <div class="col mb-3">
+                  <label cLabel for="">Correo</label>
+                  <input
+                    cFormControl
+                    name="email"
+                    placeholder="joel@gmail.com"
+                    required
+                    type="text"
+                    [(ngModel)]="employe.email"
+                  />
+                </div>
+        
+                
+          </div>
+          <div class="row">
+            <div class="col-6 mb-3">
+              <label cLabel for="">Dni</label>
+  
+              <input
+                cFormControl
+                name="dni"
+                required
+                placeholder="77712378"
+                type="text"
+                [(ngModel)]="employe.dni"
+              />
+            </div>
+            <div class="col-6 mb-3">
+              <label cLabel for="">Teléfono</label>
+              <c-input-group>
+                <span cInputGroupText>+51</span>
+                <input
+                  cFormControl
+                  name="phone"
+                  required
+                  placeholder="999213321"
+                  type="text"
+                  [(ngModel)]="employe.phone"
+                />
+              </c-input-group>
+            </div>
+          </div>
+  
+         
+          <div class="mb-3">
+            <label cLabel for="">Dni</label>
+            <c-input-group class="mb-3">
+              <input
+                cFormControl
+                name="dateOfBirth"
+                required
+                placeholder="2000-12-12"
+                type="date"
+                [(ngModel)]="employe.dateOfBirth"
+              />
+            </c-input-group>
+          </div>
+  
+          <!-- <div class="mb-3">
+              <label cLabel for="exampleFormControlTextarea1">Example textarea</label>
+              <textarea cFormControl id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div> -->
+          <button cButton type="submit">Guardar</button>
+        </form>
+      </div>
+    </c-card-body>
+  </c-card>
+  

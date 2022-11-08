@@ -38,6 +38,8 @@ export class CustomerComponent implements OnInit {
         } as Client);
        
       });
+    }else{
+      this.customers = [];
     }
    
   }

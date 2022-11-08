@@ -1,1 +1,47 @@
-<p>business works!</p>
+<c-card class="mb-4">
+    <c-card-header>
+      <strong>Perfil</strong>
+    </c-card-header>
+    <c-card-body>
+      <div >
+        <form cForm (ngSubmit)="handleForm()"   cForm >
+          <div class="mb-3">
+            <label cLabel for="">Nombre</label>
+            <input cFormControl
+            
+                   name="name"
+                   placeholder="pollo"
+                  required
+                   type="text"
+                   [(ngModel)]="business.name"
+            />
+            
+          </div>
+          
+          
+          <div class="mb-3 d-grid">
+            <label cLabel for="">Foto</label>
+            
+           
+            <input cFormControl
+                   name="photo"
+                   placeholder="imagen"
+                   type="file"
+                   
+                   required
+                   (change) = "changePhoto($event)"
+            />
+            <img  src="{{business.image}}" width="150px" class="img-fluid rounded-top mt-4" alt="">
+          </div>
+          <!-- <div class="mb-3">
+            <label cLabel for="exampleFormControlTextarea1">Example textarea</label>
+            <textarea cFormControl id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div> -->
+          <button cButton  type="submit" >Guardar</button>
+          
+        </form>
+        
+      </div>
+    </c-card-body>
+  </c-card>
+
