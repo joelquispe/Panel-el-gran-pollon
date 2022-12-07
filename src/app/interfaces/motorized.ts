@@ -10,5 +10,5 @@ export interface Motorized {
     placa?:string;
     soat?:string;
     dateOfBirth?:string;
-    motorizedStatus?:Motorizedstatus;
+    motorizedStatus:Motorizedstatus;
 }

@@ -12,7 +12,7 @@ import { Motorizedstatus } from '../../../interfaces/motorizedstatus';
 export class MotorizedFormComponent implements OnInit {
   
   motoStatus: Motorizedstatus[] = [];
-  motorized: Motorized = {};
+  motorized: Motorized = {motorizedStatus:{id:1}};
   
   id: string | null;
   title = 'Crear motorizado';
@@ -46,13 +46,13 @@ export class MotorizedFormComponent implements OnInit {
   }
 
   async handleForm() {
-    console.log(this.motorized)
-    // if (this.id != null) {
-    //   this.edit();
-    // } else {
-    //   console.log(this.motorized)
-    //   this.save();
-    // }
+    console.log(this.motorized.motorizedStatus.id)
+    if (this.id != null) {
+      this.edit();
+    } else {
+      console.log(this.motorized)
+      this.save();
+    }
   }
   async save() {
     this.api
@@ -91,7 +91,7 @@ export class MotorizedFormComponent implements OnInit {
         } as Motorizedstatus);
       })
     }
-    this.motorized.motorizedStatus = this.motoStatus[2];
+    this.motorized.motorizedStatus = this.motoStatus[0];
   }
   
 }
