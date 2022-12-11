@@ -22,6 +22,7 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { MotorizedComponent } from './components/motorized/motorized.component';
 import { MotorizedFormComponent } from './components/motorized/motorized-form/motorized-form.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ChangeStateComponent } from './components/orders/change-state/change-state.component';
 
 const routes: Routes = [
   
@@ -130,6 +131,11 @@ const routes: Routes = [
         path:'ordenes',
         component: OrdersComponent,
         data: { title:"Ordenes"}
+      },
+      {
+        path:'ordenes/estado/:id',
+        component: ChangeStateComponent,
+        data: { title:"Orden estado"}
       },
       {
         path:'motorizados',

@@ -1,0 +1,9 @@
+
+<form action="" (ngSubmit)="edit()">
+    <select [(ngModel)]="order.status" name="estado" id="">
+        <option *ngFor="let s of stateds" value="{{s}}">{{s}}</option>
+       
+    </select>
+    <br>
+    <button class="btn btn-warning mt-5">Guardar</button>
+</form>

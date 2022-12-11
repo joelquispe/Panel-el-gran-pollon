@@ -10,7 +10,6 @@
                 <th>Nombre y apellido</th>
                 <th>Correo</th>
                 <th>Telefono</th>
-                <th>Dirección</th>
                 <th>Fecha de nacimiento</th>
                 <th></th>
                 <th></th>
@@ -22,8 +21,8 @@
                 <td>{{customer.name}} {{customer.lastname}} </td>
                 <td>{{customer.email}}</td>
                 <td>{{customer.phone}}</td>
-                <td>{{customer.address}}</td>
-                <td>{{customer.dateOfBirth}}</td>
+               
+                <td>{{customer.dateofbirth}}</td>
                 <td style="width:150px;"><button cButton [color]="'danger'" class="me-1"><b>Editar</b><c-icon name="cil-trash" size="lg"></c-icon></button> </td>
                 <td style="width:150px;"><button cButton [color]="'warning'" class="me-1"><b>Eliminar</b><c-icon name="cil-pencil" size="lg"></c-icon></button> </td>
             </tr>

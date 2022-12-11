@@ -70,9 +70,9 @@ export class ApiService {
     });
   }
 
-  async login(url: string, data: DataInput,paramss:DataInput) {
+  async login(url: string, data: DataInput, paramss: DataInput) {
     return axios.post(url, data, {
-      params: paramss ,
+      params: paramss,
       headers: {
         'Access-Control-Allow-Origin ': '*',
         'Content-Type': 'application/json',
@@ -86,5 +86,27 @@ export class ApiService {
 
   showSuccess(title: string) {
     this.toastr.success(title, 'Fue un exito');
+  }
+  async notificationSend(body: string,device:string) {
+    console.log(body);
+    axios.post(
+      'https://fcm.googleapis.com/fcm/send',
+      {
+        to: device,
+        priority: 'high',
+        notification: {
+          title: 'El Gran Pollon',
+          body: body,
+          channel_id: 'notification_channel',
+        },
+      },
+      {
+        headers: {
+          "Authorization":
+            'key=AAAAtFYfFI4:APA91bELoGK2RENpOsYiV1ngqUlO0MNpwGTROxRy1XiQn_-5WSw-8IC--4us6mG0bSiH9lG_fcF5wx274BFejHzR-ututPX_VqiatZV5DhNwYjFudSMNSQtNTz9Gj0QRg18MHxsGjH14',
+          "Content-Type": 'application/json'
+        },
+      }
+    );
   }
 }

@@ -28,10 +28,10 @@ export class CustomerComponent implements OnInit {
         this.customers.push({
           id: element.id,
           name: element.name,
-          address: element.address,
+         
           phone: element.phone,
           email: element.email,
-          dateOfBirth: element.dateOfBirth,
+          dateofbirth: element.dateofbirth,
           password: element.password,
           lastname: element.lastname,
   

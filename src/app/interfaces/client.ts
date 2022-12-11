@@ -5,6 +5,6 @@ export interface Client {
     email:string,
     password:string,
     phone:string,
-    address:string,
-    dateOfBirth:string
+    dateofbirth:string,
+    fcmtoken:string
 }

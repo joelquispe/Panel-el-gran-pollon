@@ -66,6 +66,9 @@ import { BusinessComponent } from './components/business/business.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { NotificationComponent } from './components/notification/notification.component';
+import { ChangeStateComponent } from './components/orders/change-state/change-state.component';
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
@@ -77,13 +80,14 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, UserComponent, CategoryComponent, PlatilloComponent, UserFormComponent, CategoryFormComponent, PlatilloFormComponent, CustomerComponent, CustomerFormComponent, EmployeComponent, EmployeFormComponent, MotorizedComponent, MotorizedFormComponent, BusinessComponent, OrdersComponent, LoginComponent, ProfileComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, UserComponent, CategoryComponent, PlatilloComponent, UserFormComponent, CategoryFormComponent, PlatilloFormComponent, CustomerComponent, CustomerFormComponent, EmployeComponent, EmployeFormComponent, MotorizedComponent, MotorizedFormComponent, BusinessComponent, OrdersComponent, LoginComponent, ProfileComponent, NotificationComponent, ChangeStateComponent],
   imports: [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     AvatarModule,
+   
     BreadcrumbModule,
     FooterModule,
     AngularFireModule.initializeApp(environment.firebase),
