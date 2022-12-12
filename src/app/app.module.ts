@@ -68,7 +68,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { ChangeStateComponent } from './components/orders/change-state/change-state.component';
-
+import { GoogleMapsModule } from '@angular/google-maps';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
@@ -114,6 +114,7 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
+    GoogleMapsModule,
   ],
   providers: [
     {

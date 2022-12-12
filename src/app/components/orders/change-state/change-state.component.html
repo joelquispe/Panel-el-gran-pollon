@@ -1,6 +1,16 @@
+<google-map height="400px"
+            width="750px"
+            [options]="options"
+            (mapClick)="cambiar()"
+            (mapInitialized)="joel()"
+            [center]="position"
+            >
+            <map-marker [position]="position"  [title]="destino"></map-marker>
+</google-map>
 
-<form action="" (ngSubmit)="edit()">
-    <select [(ngModel)]="order.status" name="estado" id="">
+<form action="" (ngSubmit)="edit()" class="mt-4">
+    <label for="">Estado de pedido</label>
+    <select [(ngModel)]="order.status" cSelect name="status" id="">
         <option *ngFor="let s of stateds" value="{{s}}">{{s}}</option>
        
     </select>

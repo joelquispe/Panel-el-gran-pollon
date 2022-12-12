@@ -13,7 +13,18 @@ export class ChangeStateComponent implements OnInit {
   public state:stateOrder;
   id: string | null;
   order:Order
+  destino = "Destino"
+  lati :number = 0;
+  longi :number=0;
   stateds=[stateOrder.confirm,stateOrder.preparing,stateOrder.packing,stateOrder.comingOut,stateOrder.cancel]
+  options={
+    scrollwheel: false
+  }
+  position= {
+    
+    lat:this.lati,
+    lng:this.longi
+  }
   constructor(private api:ApiService, private router: Router,
     private aRouter: ActivatedRoute) {
       this.id = this.aRouter.snapshot.paramMap.get('id');
@@ -23,6 +34,7 @@ export class ChangeStateComponent implements OnInit {
     this.getDataCategory()
   }
   async getDataCategory() {
+    console.log("mis datos")
     this.api
       .getDataById('/api/order/buscar/', this.id)
       .then((resp) => {
@@ -31,9 +43,14 @@ export class ChangeStateComponent implements OnInit {
       .catch((e) => {
         if (e.response.data != null) {
           this.order = e.response.data;
+          this.lati = parseFloat(this.order.address.latitude)
+    this.longi = parseFloat(this.order.address.longitude)
+    console.log(this.lati)
           console.log(this.order);
         }
       });
+    
+    
   }
 
   async edit() {
@@ -51,4 +68,12 @@ export class ChangeStateComponent implements OnInit {
         console.log(e);
       });
   }
+  joel(){
+
+  }
+  cambiar(){
+    this.position.lat = this.lati;
+    this.position.lng = this.longi
+  }
+  
 }
